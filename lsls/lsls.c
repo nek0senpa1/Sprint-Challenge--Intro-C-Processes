@@ -22,9 +22,13 @@ int main(int argc, char **argv)
 
   if (argv < 2) {
     stringy = ".";
+  } else {
+    stringy = argv[1];
   }
 
-  
+  printf("the place we're gonna look is: %s \n", stringy);
+
+
 
   // Open directory
 
