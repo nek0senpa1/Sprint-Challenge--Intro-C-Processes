@@ -8,6 +8,7 @@ int main(int argc, char **argv)
 {
 
   DIR *directo;
+  struct dirent *de;
   // Parse command line
 
   printf("%d command line args: \n", argc);
@@ -32,6 +33,10 @@ int main(int argc, char **argv)
   // why does this tell me NULL when it should be "." ... ?
 
   directo = opendir(stringy);
+
+  while (readdir(directo) != NULL) {
+    printf("%s\n", de->d_name);
+  }
 
 
 
