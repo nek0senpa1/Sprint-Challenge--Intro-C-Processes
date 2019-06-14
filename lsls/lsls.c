@@ -21,20 +21,38 @@ int main(int argc, char **argv)
   //   printf(" %s/n", argv[j]);
   // }
 
-  char *stringy;
+  char *stringy = "./";
+
+  // printf("stringy is : %s \n", stringy);
 
   if (argv < 2) {
-    stringy = ".";
+    printf("no args given... \n");
   } else {
     stringy = argv[1];
   }
 
+  if (stringy == NULL) {
+    printf("no args given... \n");
+
+    directo = opendir(".");
+
+    while ( ( de = readdir(directo) ) != NULL) {
+      printf("%s\n", de->d_name);
+    }
+
+    return 0;
+  }
+
+
   printf("the place we're gonna look is: %s \n", stringy);
+  printf("--------------------------------------------\n");
   // why does this tell me NULL when it should be "." ... ?
+
+
 
   directo = opendir(stringy);
 
-  while (readdir(directo) != NULL) {
+  while ( ( de = readdir(directo) ) != NULL) {
     printf("%s\n", de->d_name);
   }
 
