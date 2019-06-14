@@ -6,6 +6,8 @@
  */
 int main(int argc, char **argv)
 {
+
+  DIR *directo;
   // Parse command line
 
   printf("%d command line args: \n", argc);
@@ -27,6 +29,9 @@ int main(int argc, char **argv)
   }
 
   printf("the place we're gonna look is: %s \n", stringy);
+  // why does this tell me NULL when it should be "." ... ?
+
+  directo = opendir(stringy);
 
 
 
