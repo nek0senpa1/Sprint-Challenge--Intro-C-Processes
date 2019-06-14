@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <dirent.h>
+#include <sys/stat.h>
 
 /**
  * Main
@@ -10,6 +11,13 @@ int main(int argc, char **argv)
   DIR *directo;
   struct dirent *de;
   // Parse command line
+
+  struct stat buf;
+
+  // stat("./lsls.c", &buf);
+  // printf("file size is %lld\n", buf.st_size);
+
+
 
   printf("%d command line args: \n", argc);
 
@@ -32,19 +40,22 @@ int main(int argc, char **argv)
   }
 
   if (stringy == NULL) {
-    printf("no args given... \n");
+    printf("No args given. Looking in current dir: \n");
+    printf("-----------------------------------------\n");
 
     directo = opendir(".");
 
     while ( ( de = readdir(directo) ) != NULL) {
-      printf("%s\n", de->d_name);
+      printf("%s ", de->d_name);
+      stat("./d_name", &buf);
+      printf("size %lld\n", buf.st_size);
     }
 
     return 0;
   }
 
 
-  printf("the place we're gonna look is: %s \n", stringy);
+  printf("The place we're gonna look is: %s \n", stringy);
   printf("--------------------------------------------\n");
   // why does this tell me NULL when it should be "." ... ?
 
@@ -53,7 +64,9 @@ int main(int argc, char **argv)
   directo = opendir(stringy);
 
   while ( ( de = readdir(directo) ) != NULL) {
-    printf("%s\n", de->d_name);
+    printf("%s ", de->d_name);
+    stat("./d_name", &buf);
+    printf("size %lld\n", buf.st_size);
   }
 
 
