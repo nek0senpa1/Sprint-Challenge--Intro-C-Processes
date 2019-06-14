@@ -47,8 +47,8 @@ int main(int argc, char **argv)
 
     while ( ( de = readdir(directo) ) != NULL) {
       printf("%s ", de->d_name);
-      stat("./d_name", &buf);
-      printf("size %lld\n", buf.st_size);
+      stat(de -> d_name, &buf);
+      printf(" -size %lld\n", buf.st_size);
     }
 
     return 0;
@@ -65,8 +65,8 @@ int main(int argc, char **argv)
 
   while ( ( de = readdir(directo) ) != NULL) {
     printf("%s ", de->d_name);
-    stat("./d_name", &buf);
-    printf("size %lld\n", buf.st_size);
+    stat(de -> d_name, &buf);
+    printf(" -size %lld\n", buf.st_size);;
   }
 
 
