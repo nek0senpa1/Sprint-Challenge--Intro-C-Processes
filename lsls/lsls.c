@@ -41,14 +41,14 @@ int main(int argc, char **argv)
 
   if (stringy == NULL) {
     printf("No args given. Looking in current dir: \n");
-    printf("-----------------------------------------\n");
+    printf("----------------------------------------------------------------\n");
 
     directo = opendir(".");
 
     while ( ( de = readdir(directo) ) != NULL) {
       printf("%*s ", 40, de->d_name);
       stat(de -> d_name, &buf);
-      printf(" -size %lld\n", buf.st_size);
+      printf(" -size %ld\n", buf.st_size);
     }
 
     return 0;
@@ -56,7 +56,7 @@ int main(int argc, char **argv)
 
 
   printf("The place we're gonna look is: %s \n", stringy);
-  printf("--------------------------------------------\n");
+  printf("------------------------------------------------------------------\n");
   // why does this tell me NULL when it should be "." ... ?
 
 
@@ -66,7 +66,7 @@ int main(int argc, char **argv)
   while ( ( de = readdir(directo) ) != NULL) {
     printf("%*s ", 40, de->d_name);
     stat(de -> d_name, &buf);
-    printf(" -size %lld\n", buf.st_size);;
+    printf(" -size %ld\n", buf.st_size);;
   }
 
 
@@ -76,6 +76,8 @@ int main(int argc, char **argv)
   // Repeatly read and print entries
 
   // Close directory
+
+  closedir(directo);
 
   return 0;
 }
