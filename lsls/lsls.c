@@ -29,7 +29,7 @@ int main(int argc, char **argv)
   //   printf(" %s/n", argv[j]);
   // }
 
-  char *stringy = "./";
+  char *stringy = ".";
 
   // printf("stringy is : %s \n", stringy);
 
@@ -46,7 +46,7 @@ int main(int argc, char **argv)
     directo = opendir(".");
 
     while ( ( de = readdir(directo) ) != NULL) {
-      printf("%s ", de->d_name);
+      printf("%*s ", 40, de->d_name);
       stat(de -> d_name, &buf);
       printf(" -size %lld\n", buf.st_size);
     }
@@ -64,7 +64,7 @@ int main(int argc, char **argv)
   directo = opendir(stringy);
 
   while ( ( de = readdir(directo) ) != NULL) {
-    printf("%s ", de->d_name);
+    printf("%*s ", 40, de->d_name);
     stat(de -> d_name, &buf);
     printf(" -size %lld\n", buf.st_size);;
   }
